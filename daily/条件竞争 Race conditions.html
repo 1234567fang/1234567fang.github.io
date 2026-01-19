@@ -1,0 +1,263 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Deyu's Blog | Deyu's Blog</title><meta name="author" content="仰泳鱼"><meta name="copyright" content="仰泳鱼"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="大多数网站通过多个线程处理并发请求，所有读写都来自一个共享的数据库。应用代码很少考虑并发的风险，因此网络上经常出现条件竞争。也就是说网站服务器来不及处理多余的请求，导致多个不同的线程同时与相同的数据交互，从而导致“冲突”，从而导致应用程序中出现意外行为。注意条件竞争不仅限于特定网页应用架构，常见的还有数据库，部分中间件等。漏洞利用通常是使用限额超载——它们通过同步请求来突破某种限制，比如：多次兑换">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Deyu&#39;s Blog">
+<meta property="og:url" content="http://example.com/daily/%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89%20Race%20conditions.html">
+<meta property="og:site_name" content="Deyu&#39;s Blog">
+<meta property="og:description" content="大多数网站通过多个线程处理并发请求，所有读写都来自一个共享的数据库。应用代码很少考虑并发的风险，因此网络上经常出现条件竞争。也就是说网站服务器来不及处理多余的请求，导致多个不同的线程同时与相同的数据交互，从而导致“冲突”，从而导致应用程序中出现意外行为。注意条件竞争不仅限于特定网页应用架构，常见的还有数据库，部分中间件等。漏洞利用通常是使用限额超载——它们通过同步请求来突破某种限制，比如：多次兑换">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp">
+<meta property="article:published_time" content="2025-12-31T07:31:11.161Z">
+<meta property="article:modified_time" content="2025-12-31T07:31:11.161Z">
+<meta property="article:author" content="仰泳鱼">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp"><link rel="shortcut icon" href="https://www.emojiall.com/images/240/emojione/1f1e8-1f1f3.png"><link rel="canonical" href="http://example.com/daily/%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89%20Race%20conditions.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Deyu\'s Blog',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2025-12-31 15:31:11'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Deyu's Blog"><span class="site-name">Deyu's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 作者</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">Deyu's Blog</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><p>大多数网站通过多个线程处理并发请求，所有读写都来自一个共享的数据库。应用代码很少考虑并发的风险，因此网络上经常出现条件竞争。也就是说网站服务器来不及处理多余的请求，导致多个不同的线程同时与相同的数据交互，从而导致“冲突”，从而导致应用程序中出现意外行为。<br>注意条件竞争不仅限于特定网页应用架构，常见的还有数据库，部分中间件等。<br>漏洞利用通常是使用限额超载——它们通过同步请求来突破某种限制，比如：<br>多次兑换礼品卡<br>重复利用优惠券<br>多次给产品刷评分<br>提现或者转账超过账户余额的现金<br>重复使用同一个验证码<br>绕过反暴力破解速率限制<br><strong>以上都利用了安全检查与受保护动作之间的时间间隙（碰撞窗口）</strong><br><a href="../_posts/2024-07-25.md#repeater%E6%B5%8B%E8%AF%95">repeater测试</a></p>
+<h1 id="突破限额"><a href="#突破限额" class="headerlink" title="突破限额"></a>突破限额</h1><p>最常见的条件竞争<br>状态检查存在时间差<br>靶场：<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/race-conditions/lab-race-conditions-limit-overrun">Limit overrun race conditions</a><br>购买夹克衫但钱不够，尝试利用优惠价<br>猜测流程是结账时从数据库中查看当前session的折扣是否使用，如果没有使用则应用到购物车的总金额中，并将数据库的折扣设置为已使用。<br>利用的是 “检查优惠券状态并使用” 与 “标记优惠券为已使用” 这两个数据库操作之间的竞争窗口</p>
+<p>靶场：<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/race-conditions/lab-race-conditions-bypassing-rate-limits">Lab: Bypassing rate limits via race conditions | Web Security Academy</a><br>对登录作了次数限制来防止爆破，尝试绕过<br>逻辑是一个用户名尝试3次后就会锁定，因此尝试次数与用户名相关联而不是session，考虑的情况是提交登录尝试和网站增加与特定用户名关联的失败登录尝试次数的计数器之间存在<strong>竞争窗口</strong></p>
+<p>简单说，就是利用“登陆时检查当前次数”与“登陆过次数+1”这之间的竞争窗口<br>实现：攻击者同时（使用单数据包攻击）发送 N个 使用<strong>同一个错误密码</strong>的登录请求，这n个请求需要同时到达服务器。同时服务器会并行处理这些请求（涉及架构设计与运行多线程，可以理解为银行）<br>需要py或者turbo Intruder<br>BurpSuite已经有了intruder模块为什么还要用这个插件，问题的原因就是并发是指的是抢在同一时间发送所有数据包，而intruder模块是无法做到的。</p>
+<h2 id="隐藏的步骤"><a href="#隐藏的步骤" class="headerlink" title="隐藏的步骤"></a>隐藏的步骤</h2><p>一个单个请求实际上背后可能隐藏有多个子状态的转换<br>靶场：<del>2FA simple bypass</del><br>猜测实际逻辑可能是：</p>
+<ol>
+<li>判断用户名密码是否正确，正确则生成可以使用的session</li>
+<li>接着跳转到 &#x2F;login 页面，要求输入2FA code</li>
+<li>如果输入正确则跳转到最后的account账户页面，如果输入错误则将session设置为无效。</li>
+</ol>
+<blockquote>
+<p><strong>2FA Code</strong> 是 <strong>双因素认证验证码</strong>，全称是 Two-Factor Authentication Code。它是一种在用户输入用户名和密码后，必须提供的第二道动态安全凭证。比如邮箱，Steam，QQ微信，Wegame。</p>
+</blockquote>
+<p>这套逻辑的关键就在于拿生成的session直接访问账户页面，绕过了2FA Code<br>为什么？应用在验证了用户名和密码正确后，<strong>立即将用户标识（如userid）写入会话（Session）</strong>，然后才跳转到要求输入2FA Code的页面。攻击者可以在跳转之前，直接使用这个已认证的会话访问需要登录后才能进入的主页。</p>
+<p>实现：在通过验证后，响应包中会返回一个已设置 <code>session[&#39;userid&#39;]</code> 的Cookie，此时忽略服务器的2FA要求，带着这个包含session的cookie访问 my-account等受保护页面，核心是找未授权接口。</p>
+<p>方法论：<br>预测<br>    状态如何存储<br>    编辑还是追加数据，追加只有突破限额这种可能<br>    对什么对象操作<br>测试<br>    首先需要对端点在正常条件下的行为进行基准测试（separate connections）<br>    然后使用单数据包攻击测试（HTTP2 、HTTP1.1）<br>    寻找不同之处<br>证明<br>    通过不同点进行思考和排查，排查无关因素</p>
+<h1 id="多端点竞争"><a href="#多端点竞争" class="headerlink" title="多端点竞争"></a>多端点竞争</h1><p>多端点的条件竞争-single connection<br>靶场：<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/race-conditions/lab-race-conditions-multi-endpoint">Lab: Multi-endpoint race conditions | Web Security Academy</a><br>逻辑正常是</p>
+<ol>
+<li>将商品添加到购物车</li>
+<li>付款：<code>POST /cart/checkout</code></li>
+<li>确认订单：<code>GET /cart/order-confirmation?order-confirmed=true</code></li>
+</ol>
+<p>存在的漏洞就是在确认订单的时候，没有充足的验证，没有验证当前购物车的总金额和最后付款的金额是否一致，导致了攻击。<br>攻击者的流程是：</p>
+<ol>
+<li>先将便宜的商品添加到购物车中（必要）</li>
+<li>付款：<code>/cart/checkout</code></li>
+<li>将jacket添加到购物车中</li>
+<li>确认订单：<code>GET /cart/order-confirmation?order-confirmed=true</code></li>
+</ol>
+<p>想要实现条件竞争有两个端点，一个是<code>POST /cart</code>将商品添加到购物车中，一个是<code>GET /cart/checkout</code>付款并确认订单。</p>
+<p>在进行多端点条件竞争时最容易会遇到的是，使用单数据包并发的时候，需要&#x2F;难以对齐每个请求的竞争窗口。<br>为什么难以对齐：因为在多端点或复杂单端点攻击中会包含两种情况<br>    一：<strong>网络架构引入的延迟</strong>：例如，前端服务器每次与后端建立新连接时可能会有延迟。使用的协议也可能有重大影响。（这种由后端延迟造成的一般不会影响并发，可以忽略。因为它会同等地延迟并行请求，导致这些请求虽然存在延迟，但是彼此仍然算是同步的）使用连接预热来解决。<br>    二：<strong>端点特定处理引入的延迟</strong>：不同的端点在其处理时间上天生就存在差异，有时这种差异取决于它们触发了什么操作。（如果连接预热没有造成差别，那说明可能确实是由端点特定因素引起，这种有两种处理方法…）<br>        第一种就是引入短暂的<strong>客户端延迟</strong>，即通过多次请求确定两个端点之间延迟差别的时间，让处理更快的请求之前加上这么一个短暂的延迟。相应的就会导致无法使用单数据包攻击技术。<br>        第二种方法是利用一项常见的安全功能。如果发送请求过快且数量过多，Web服务器通常会延迟处理这些请求。通过发送大量虚假请求故意触发速率或资源限制，可以造成适当的<strong>服务器端延迟</strong>。这种情况使得单数据包攻击变得可行。</p>
+<p>为什么需要对齐：如果不将它们“对齐”到同一时间点到达易受攻击的代码段，攻击就会失败。例如取钱，查询余额有没有足够的钱和取出对应的钱，当攻击者使用并发，确保两个请求完全交错。数据库执行取钱的操作意外的快于查询余额的操作，会导致余额回滚。如果对齐失败，攻击者使用并发但其中“取款请求”因更复杂而更慢的执行，取款已经覆盖了查询，余额已经变成了零。</p>
+<p>当写入操作<strong>完全并行</strong>时，数据库可能以任意顺序处理它们<br><img src="/../img/Pasted%20image%2020251231153110.png"></p>
+<h1 id="单端点竞争"><a href="#单端点竞争" class="headerlink" title="单端点竞争"></a>单端点竞争</h1><p>向单一端点发送不同值的并行请求有时会触发严重的条件竞争<br>现实中生成邮箱确认和基于邮箱的操作通常都有存在单端点条件竞争的可能：因为电子邮件通常在服务器向客户端发出HTTP响应后，在后台线程中发送，修改账户邮箱时，发送验证邮件和更新数据库的操作之间存在竞争窗口，可能导致邮件内容错乱，劫持账户等。<br>靶场：<a target="_blank" rel="noopener" href="https://portswigger.net/web-security/race-conditions/lab-race-conditions-single-endpoint">Lab: Single-endpoint race conditions | Web Security Academy</a><br>逻辑产生漏洞的原因是在更改电子邮件时，会更新user.unconfirmed_email，将token保存在user.confirmation_token中（这一步理解为在更新数据库）但在构造邮件内容的时候，email和token都是从数据库中提取的（发送邮件依赖数据库）<strong>可知写入数据库和发邮件之间存在碰撞窗口</strong></p>
+<p>正常流程是先更新数据库（更新邮箱）-&gt;发送邮件，但攻击者发现存在这么一个竞争窗口，第一次更新邮箱请求发送后，后端会发送电子邮件。在邮件发送前，后端处理了第二个更新邮箱请求，将第二个邮箱地址和token写到了数据库中。因此如果第一次发送的邮件内容出现了第二次的邮箱，就说明竞争成功。<br>将流程变成了更新数据库（更新邮箱）-&gt;再次更新数据库进行覆盖-&gt;发送邮件<br>此时发送的邮件，通过数据库查到的邮箱已经是进行覆盖过的邮箱地址，也就造成了第二者接管。</p>
+<h1 id="部分构造竞争"><a href="#部分构造竞争" class="headerlink" title="部分构造竞争"></a>部分构造竞争</h1><h1 id="时间敏感攻击"><a href="#时间敏感攻击" class="headerlink" title="时间敏感攻击"></a>时间敏感攻击</h1><h1 id="防护"><a href="#防护" class="headerlink" title="防护"></a>防护</h1><ul>
+<li>避免混合使用不同来源的数据。</li>
+<li>确保敏感的端点利用数据存储的并发特性来保证状态的改变是原子化的。例如，使用单独的数据库事务来检查支付金额是否与购物车价值匹配并确认订单。</li>
+<li>利用数据存储的完整性和一致性特征(如唯一性约束)来作为深度防御措施，</li>
+<li>不要试图使用一个数据存储层来保护另一个。例如，不要用session来保护数据库不受limit-overrun攻击</li>
+<li>确保您的session处理框架保持session的内部一致性。</li>
+<li>某些架构可能非常适合不在服务器端保存状态信息，可以使用加密技术(例如JWT)将状态信息存储在客户端。但使用JWT也并不是完全没有风险。</li>
+</ul>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2024/07/11/Dl2NuA1dKsQm3wn.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">仰泳鱼</div><div class="author-info__description">仅供分享个人研究成果</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">55</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1234567fang"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/1234567fang" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">今日事，今日毕</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/01/17/windows%E5%92%8Clinux%E7%9A%84%E5%91%BD%E4%BB%A4%E6%B7%B7%E6%B7%86%E6%96%B9%E5%BC%8F/" title="无题"><img src="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2026/01/17/windows%E5%92%8Clinux%E7%9A%84%E5%91%BD%E4%BB%A4%E6%B7%B7%E6%B7%86%E6%96%B9%E5%BC%8F/" title="无题">无题</a><time datetime="2026-01-17T14:26:17.039Z" title="发表于 2026-01-17 22:26:17">2026-01-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/19/2025-07-19/" title="密码学"><img src="https://s2.loli.net/2024/07/11/3p72al5i9FCwBKj.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="密码学"/></a><div class="content"><a class="title" href="/2025/07/19/2025-07-19/" title="密码学">密码学</a><time datetime="2025-07-18T16:00:00.000Z" title="发表于 2025-07-19 00:00:00">2025-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/04/15/%E5%BA%94%E6%80%A5%E9%9D%B6%E6%9C%BA/" title="玄机应急响应"><img src="https://s2.loli.net/2024/07/11/OkDMqp8b7muvN9C.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="玄机应急响应"/></a><div class="content"><a class="title" href="/2025/04/15/%E5%BA%94%E6%80%A5%E9%9D%B6%E6%9C%BA/" title="玄机应急响应">玄机应急响应</a><time datetime="2025-04-15T12:51:00.084Z" title="发表于 2025-04-15 20:51:00">2025-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/27/2025-02-27/" title="LLM"><img src="https://s2.loli.net/2024/07/11/hkNDJcFqupasnZV.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LLM"/></a><div class="content"><a class="title" href="/2025/02/27/2025-02-27/" title="LLM">LLM</a><time datetime="2025-02-27T02:10:52.046Z" title="发表于 2025-02-27 10:10:52">2025-02-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/21/2025-02-21/" title="任意邮件伪造"><img src="https://s2.loli.net/2024/07/11/OkDMqp8b7muvN9C.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="任意邮件伪造"/></a><div class="content"><a class="title" href="/2025/02/21/2025-02-21/" title="任意邮件伪造">任意邮件伪造</a><time datetime="2025-02-20T16:00:00.000Z" title="发表于 2025-02-21 00:00:00">2025-02-21</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%97%A5%E5%BF%97/"><span class="card-category-list-name">日志</span><span class="card-category-list-count">35</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 1.1em; color: #999">项目</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2026/01/"><span class="card-archive-list-date">一月 2026</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">55</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-01-19T12:08:00.879Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By 仰泳鱼</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
